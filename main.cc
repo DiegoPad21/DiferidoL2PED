@@ -8,8 +8,8 @@ struct Empleado {
   float salario;
 };
 
-void IngresarEmpleado(Empleado empleados[], int n) {
-  for (int i = 0; i < n; i++) {
+void IngresarEmpleado(Empleado empleados[], int cantidadEmpleados) {
+  for (int i = 0; i < cantidadEmpleados; i++) {
     std::cin.ignore();
     std::cout << "Ingrese el nombre del empleado: ";
     std::getline(std::cin, empleados[i].nombre);
@@ -23,25 +23,25 @@ void IngresarEmpleado(Empleado empleados[], int n) {
   }
 }
 
-double CalcularPromedioSalario(Empleado empleados[], int n) {
+double CalcularPromedioSalario(Empleado empleados[], int cantidadEmpleados) {
   double suma = 0.0;
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < cantidadEmpleados; i++) {
     suma += empleados[i].salario;
   }
-  return suma / n;
+  return suma / cantidadEmpleados;
 }
 
-int CalcularEdad(Empleado empleados[], int n) {
+int CalcularEdad(Empleado empleados[], int cantidadEmpleados) {
   int suma = 0;
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < cantidadEmpleados; i++) {
     suma += empleados[i].edad;
   }
-  return suma / n;
+  return suma / cantidadEmpleados;
 }
 
-void MostrarEmpleados(Empleado empleados[], int n) {
+void MostrarEmpleados(Empleado empleados[], int cantidadEmpleados) {
   std::cout << "Datos de los empleados: " << std::endl;
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < cantidadEmpleados; i++) {
     std::cout << "Nombre: " << empleados[i].nombre;
     std::cout << std::endl;
     std::cout << "Fecha de nacimiento: " << empleados[i].fecha_de_nacimiento;
@@ -56,17 +56,17 @@ void MostrarEmpleados(Empleado empleados[], int n) {
 
 int main(int argc, char* argv[]) {
   Empleado empleados[100];
-  int n;
+  int cantidadEmpleados;
 
   std::cout << "Ingresar cuantos empleados se registraran: ";
-  std::cin >> n;
+  std::cin >> cantidadEmpleados;
 
-  if (n > 0 && n < 100) {
-    IngresarEmpleado(empleados, n);
-    MostrarEmpleados(empleados, n);
+  if (cantidadEmpleados > 0 && cantidadEmpleados < 100) {
+    IngresarEmpleado(empleados, cantidadEmpleados);
+    MostrarEmpleados(empleados, cantidadEmpleados);
 
-    double PromedioSalarios = CalcularPromedioSalario(empleados, n);
-    int PromedioEdad = CalcularEdad(empleados, n);
+    double PromedioSalarios = CalcularPromedioSalario(empleados, cantidadEmpleados);
+    int PromedioEdad = CalcularEdad(empleados, cantidadEmpleados);
 
     std::cout << "El salario promedio es de: $" << PromedioSalarios;
     std::cout << std::endl;
